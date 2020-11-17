@@ -5,3 +5,11 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+6.times do
+   movie = Movie.create(title: Faker::Movie.title, release_year: Faker::Date.between(from: 1990, to: 2020), producer: "Universal")
+   3.times do
+    movie.reviews.create(comment: Faker::Movie.quote, rating: Faker::Number.between(from: 1, to: 5))
+   end
+end
