@@ -1,5 +1,12 @@
 function init() {
     const containerDiv = document.getElementById("container");
+    const consoleForm = document.querySelector("form")
+
+    consoleForm.addEventListener('submit', (e) => {
+        e.preventDefault()
+        
+        containerDiv.innerHTML += newMovie.renderIndexHTML();
+    })
 
     function getMovies() {
         fetch(`http://localhost:3000/movies`)
@@ -16,7 +23,7 @@ function init() {
                     m.reviews
                     );
                     console.log(newMovie);
-                    containerDiv.innerHTML += newMovie.renderShowHTML();
+                    containerDiv.innerHTML += newMovie.renderIndexHTML();
             });
             containerDiv.innerHTML += `</ul>`
         });
