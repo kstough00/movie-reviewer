@@ -6,7 +6,7 @@ class Movie {
         this.reviews = reviews
     }
     renderIndexHTML() {
-        return `<li>${this.title} - ${this.releaseYear} - ${this.producer} - ${this.reviews.length} reviews</li>`;
+        return `<li>${this.title} - ${this.releaseYear} - ${this.producer} - ${this.reviews.length}<a href="http://localhost:3000/movies">Reviews</a></li>`;
     }
 
     renderShowHTML() {
