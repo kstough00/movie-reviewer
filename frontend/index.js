@@ -14,8 +14,11 @@ function init() {
                     m.producer, 
                     m.reviews
                 );
-                console.log(newMovie);        
+                console.log(newMovie);
+                containerDiv.innerHTML += `<ul>`
+                containerDiv.innerHTML += newMovie.renderIndexHTML();
             });
+            containerDiv.innerHTML += `</ul>`
         });
     }
     getMovies();

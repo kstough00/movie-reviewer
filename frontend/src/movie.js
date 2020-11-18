@@ -5,4 +5,7 @@ class Movie {
         this.producer = producer
         this.reviews = reviews
     }
+    renderIndexHTML() {
+        return `<li>${this.title} - ${this.releaseYear} - ${this.producer}`;
+    }
 }
