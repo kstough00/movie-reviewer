@@ -7,16 +7,16 @@ function init() {
             return res.json()
         })
         .then(function (movies) {
+            containerDiv.innerHTML += `<ul>`
             movies.forEach((m) => {
                 const newMovie = new Movie(
                     m.title, 
                     m.release_year, 
                     m.producer, 
                     m.reviews
-                );
-                console.log(newMovie);
-                containerDiv.innerHTML += `<ul>`
-                containerDiv.innerHTML += newMovie.renderIndexHTML();
+                    );
+                    console.log(newMovie);
+                    containerDiv.innerHTML += newMovie.renderShowHTML();
             });
             containerDiv.innerHTML += `</ul>`
         });
