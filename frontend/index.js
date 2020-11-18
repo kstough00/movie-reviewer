@@ -6,8 +6,16 @@ function init() {
         .then(function(res) {
             return res.json()
         })
-        .then(function (data) {
-
+        .then(function (movies) {
+            movies.forEach((m) => {
+                const newMovie = new Movie(
+                    m.title, 
+                    m.release_year, 
+                    m.producer, 
+                    m.reviews
+                );
+                console.log(newMovie);        
+            });
         });
     }
     getMovies();
