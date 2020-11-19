@@ -9,14 +9,22 @@ class Movie {
         this.reviews = reviews
         Movie.all.push
     }
+
     renderIndexHTML() {
-        return `<li>${this.title} - ${this.releaseYear} - ${this.producer} - ${this.reviews.length}<a href="http://localhost:3000/movies"> Reviews</a></li>`;
+        return `<li>${this.title},
+         ${this.releaseYear},
+         ${this.producer},
+         ${this.reviews.length},
+         <a class="nav-link" href=""> Reviews</a></li>`;
     }
 
-    renderShowHTML() {
-        return `<div>
-            <h1>${this.title}</h1>
-            ${this.reviews.map((review) => `<p>${review.comment} - ${review.rating}</p>`).join("")}
-            </div>`;
+    static renderShowHTML() {
+        // return `<div>
+        //     <h1>${this.title}</h1>
+        //     ${this.reviews.map((review) => `<p>${review.comment} - ${review.rating}</p>`).join("")}
+        //     </div>`;
+        return Movie.all.map(movie=>{
+            movie.renderIndexHTML()
+        })
     }
 }
