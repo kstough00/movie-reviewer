@@ -3,6 +3,7 @@ class Movie {
     static all = []
 
     constructor(Obj){
+        this.id = Obj.id
         this.title = Obj.title
         this.release_year = Obj.release_year
         this.producer = Obj.producer
@@ -11,20 +12,17 @@ class Movie {
     }
 
     renderIndexHTML() {
-        return (`<li>${this.title},
+        return (`
+        <li>${this.title},
          ${this.release_year},
          ${this.producer},
          ${this.reviews.length} 
-         <a class="nav-link" href=""> Reviews</a></li>
+         <a class id="movie-${this.id}" href=""> Reviews</a></li>
          `)
     }
 
     static renderHTMLAll(){
         return Movie.all.map(movie=> movie.renderIndexHTML()).join("")
-        // return `<div>
-        //     <h1>${this.title}</h1>
-        //     ${this.reviews.map((review) => `<p>${review.comment} - ${review.rating}</p>`).join("")}
-        //     </div>`;
     }
 
     static renderAll(){

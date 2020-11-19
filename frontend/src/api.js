@@ -11,13 +11,4 @@ class ApiService {
         
     }
 
-    // getAllMoviesthen() {
-    //     fetch(this.baseUrl+"/movies")
-    //     .then(resp => resp.json())
-    //     .then( data => {
-    //         debugger
-    //     })
-    // }
-    
-
 }

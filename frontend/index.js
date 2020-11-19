@@ -4,7 +4,10 @@ const api = new ApiService();
 
 const init = () =>{
     renderMovies()
+    // bindEvents()
 }
+
+// function
 
 async function renderMovies() {
     const movies = await api.getAllMovies()
