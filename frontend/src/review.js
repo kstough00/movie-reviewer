@@ -4,11 +4,11 @@ class Review {
         this.comment = comment
         this.rating = rating
     }
-    renderIndexHTML() {
+    HTMLifyReview() {
         return `<li>${this.comment} - ${this.rating}</li>`;
     }
 
-    renderShowHTML() {
+    DisplayReviews() {
         return `<div>
             <h1>${Movie.title}</h1>
             ${this.reviews.map((review) => `<p>${review.comment} - ${review.rating}</p>`).join("")}

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
     <div class="title"><h1>Welcome to Movie-Reviewer!</h1></div>
     <div class="navbar">
-            <div><a class="nav-link" href="">Add a Movie!</a></div>
+            <div><a class="nav-link" href="">Search for a Movie:</a></div><br>
     </div>
 </div>
 <html lang="en">
@@ -11,18 +11,6 @@
     <title>Document</title>
 </head>
 <body>
-    <div>
-        <h2>Add a Movie!</h2>
-        <form>
-            <label>Title:</label>
-            <input type="text" /><br>
-            <label>Release Year:</label>
-            <input type="number" /><br>
-            <label>Produced By:</label>
-            <input type="text" /><br>
-            <input type="submit" />
-        </form>
-    </div>
     <div id="container">
         
     </div>
@@ -30,22 +18,36 @@
         
     </div>
             <div>
-                <h3>Add a Review!</h3>
-                <form>
-                    <label>Comment:</label>
+                <h1></h1><a class="nav-link" href="">Add a Movie!</a></h1>
+                <form id= "createMovie" "display: none">
+                    <label>Title:</label>
                     <input type="text" /><br>
-                    <label>Rating:</label>
+                    <label>Release Year:</label>
                     <input type="number" /><br>
+                    <label>Produced By:</label>
+                    <input type="text" /><br>
                     <input type="submit" />
                 </form>
-            </div>
+            </div><br>
+
     <div id="review-show">
 
+        <div>
+            <h3>Add a Review!</h3>
+            <form>
+                <label>Comment:</label>
+                <input type="text" /><br>
+                <label>Rating:</label>
+                <input type="number" /><br>
+                <input type="submit" />
+            </form>
+        </div>
+
     </div>
+    <script src="src/api.js"></script>
     <script src="src/movie.js"></script>
     <script src="src/review.js"></script>
     <script src="index.js"></script>
-    <script src="src/api.js"></script>
 
 
 </body>

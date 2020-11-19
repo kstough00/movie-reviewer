@@ -1,13 +1,14 @@
-class ApiServices {
+class ApiService {
 
     constructor() {
          this.baseUrl = `http://localhost:3000`;
     }
 
-    async getMovies() {
+    async getAllMovies() {
         const resp = await fetch(this.baseUrl+"/movies")
         const data = await resp.json()
-        debugger
+        return data 
+        
     }
 
     // getAllMoviesthen() {
@@ -17,7 +18,6 @@ class ApiServices {
     //         debugger
     //     })
     // }
-
-
+    
 
 }

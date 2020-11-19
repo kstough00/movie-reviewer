@@ -1,3 +1,5 @@
+console.log("Movies Rule")
+
 const api = new ApiService();
 
 const init = () =>{
@@ -6,7 +8,23 @@ const init = () =>{
 
 async function renderMovies() {
     const movies = await api.getAllMovies()
+    for(movie of movies){
+        new Movie(movie)
+    }
+    const movieContent = document.getElementById("movie-show")
+    movieContent.innerHTML += Movie.renderHTMLAll()
 }
+
+
+// bindEventListeners(){
+//     let form = document.getElementById("movie-show")
+//     document.getElementById("movie-show").addEventListener('click', function() {
+//         if(form.style.display === 'none') {
+//             form.style.display = 'block';
+//         } else {
+//             form.style.display = 'none';
+//         }
+// })
 
 init()
 
