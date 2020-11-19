@@ -16,8 +16,13 @@ class Movie {
         <li>${this.title},
          ${this.release_year},
          ${this.producer},
-         ${this.reviews.length} 
-         <a class id="movie-${this.id}" href=""> Reviews</a></li>
+         Reviews:${this.reviews.length} 
+            <form id= "createMovie" "display: none">
+         <ul>
+         ${this.reviews.map(review=> `<li> ${review.comment}: Rating:${review.rating}</li>`).join("")}
+         </ul>
+         <h1><button type="button" id="movie-${this.id}" class="btn btn-sm btn-outline-secondary movies-btn"> Add Review</button></h1>
+        <br>
          `)
     }
 
