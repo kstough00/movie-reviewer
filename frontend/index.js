@@ -30,7 +30,7 @@ async function renderMovies() {
 
 async function submitMovie(e) {
     e.preventDefault();
-    const formData = new FormData(e.target);
+    const formData = new FormData(e);
     const res = await apiService.submitMovie(formData);
     if (res.ok) {
       renderMovies();
