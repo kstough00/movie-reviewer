@@ -1,9 +1,10 @@
 class Review {
-    
+
     constructor(Obj){
         this.comment = Obj.comment
         this.rating = Obj.rating
     }
+    
     HTMLifyReview() {
         return `<li>${this.comment} - ${this.rating}</li>`;
     }

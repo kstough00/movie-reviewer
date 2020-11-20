@@ -16,8 +16,8 @@ class Movie {
         <li>${this.title},
          ${this.release_year},
          ${this.producer},
-         Reviews:${this.reviews.length} 
-            <form id= "movie-form" "display: none">
+         Reviews: ${this.reviews.length} 
+            <form id= "movie-form">
          <ul>
          ${this.reviews.map(review=> `<li> ${review.comment}: Rating:${review.rating}</li>`).join("")}
          </ul>
@@ -37,7 +37,5 @@ class Movie {
         </li>
         `)
     }
-
-
 
 }

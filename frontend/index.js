@@ -12,12 +12,10 @@ function bindEventListeners() {
     const newMovieForm = document.getElementById('movie-form');
     const newReviewForm = document.getElementById('review-form');
   
-    reviewDropDown.addEventListener('click', renderReviews);
+    // reviewDropDown.addEventListener('click', renderReviews);
     newMovieForm.addEventListener('submit', submitMovie);
-    newReviewForm.addEventListener('submit', submitReview);
+    // newReviewForm.addEventListener('submit', submitReview);
   }
-
-// function
 
 async function renderMovies() {
     const movies = await api.getAllMovies()
@@ -37,21 +35,20 @@ async function submitMovie(e) {
     }
   }
 
-
-// bindEventListeners(){
-//     let form = document.getElementById("movie-show")
-//     document.getElementById("movie-show").addEventListener('click', function() {
-//         if(form.style.display === 'none') {
-//             form.style.display = 'block';
-//         } else {
-//             form.style.display = 'none';
-//         }
-// })
-
-init()
-
-
-
+  
+  init()
+  
+  
+  // bindEventListeners(){
+  //     let form = document.getElementById("movie-show")
+  //     document.getElementById("movie-show").addEventListener('click', function() {
+  //         if(form.style.display === 'none') {
+  //             form.style.display = 'block';
+  //         } else {
+  //             form.style.display = 'none';
+  //         }
+  // })
+  
 
 
 // document.addEventListener("DOMContentLoaded", () => {
