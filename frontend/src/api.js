@@ -9,19 +9,19 @@ class ApiService {
         return data 
     }
 
-    async submitMovie(movieData) {
-        movieData.preventDefault();
+    async submitMovie(e) {
+        e.preventDefault();
         const res = await fetch(this.baseUrl+"/movies", {
-          method: 'POST',
-          body: movieData
+          method: "POST",
+          body: movie
         });
         return res;
     }
 
     async submitReview(e) {
         e.preventDefault();
-        const res = await fetch(this.baseUrl+"/movies", {
-          method: 'POST',
+        const res = await fetch(this.baseUrl+"/movies/:id[6]", {
+          method: "POST",
           body: e
         });
         return res;

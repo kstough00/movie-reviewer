@@ -13,7 +13,7 @@ function bindEventListeners() {
     const newReviewForm = document.getElementById('review-form');
   
     // reviewDropDown.addEventListener('click', renderReviews);
-    newMovieForm.addEventListener('submit', submitMovie);
+    newMovieForm.addEventListener('submit', movieFormSubmission);
     // newReviewForm.addEventListener('submit', submitReview);
   }
 
@@ -26,14 +26,45 @@ async function renderMovies() {
     movieContent.innerHTML += Movie.renderHTMLAll()
 }
 
-async function submitMovie(e) {
-    e.preventDefault();
-    const formData = new FormData(e);
-    const res = await apiService.submitMovie(formData);
-    if (res.ok) {
-      renderMovies();
+// async function submitMovie(e) {
+//     e.preventDefault();
+//     const formData = new FormData(e);
+//     const res = await apiService.submitMovie(formData);
+//     if (res.ok) {
+//       renderMovies();
+//     }
+// }
+
+async function movieFormSubmission(event){
+    event.preventDefault();
+    // debugger
+    let title = document.getElementById("title").value
+    let release_year = document.getElementById("release_year").value
+    let producer = document.getElementById("producer").value
+
+    let movie = {
+        title: title,
+        release_year: release_year,
+        producer: producer
     }
-  }
+    const resp = await api.submitMovie(movie)
+    // fetch(`${baseUrl}/movies`, {
+    //     method: "POST",
+    //     headers: {
+    //         'Accept': 'application/json',
+    //         'Content-Type': 'application/json'
+    //       },
+    //     body: JSON.stringify(movie)
+    // })
+    .then(resp => resp.json())
+    .then(movie => {
+        let m = new Movie(movie.id, movie.title, movie.release_year, movie.producer)
+        m.renderMovies();
+    })
+
+}
+
+  //need to write submitReview function
 
   
   init()
