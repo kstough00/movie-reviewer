@@ -4,8 +4,16 @@ const api = new ApiService();
 
 const init = () =>{
     renderMovies()
-    // bindEvents()
+    bindEventListeners();
 }
+
+function bindEventListeners() {
+    const newMovieForm = document.getElementById('movie-form');
+    const newReviewForm = document.getElementById('review-form');
+  
+    newMovieForm.addEventListener('submit', submitMovie);
+    newReviewForm.addEventListener('submit', submitReview);
+  }
 
 // function
 
@@ -17,6 +25,16 @@ async function renderMovies() {
     const movieContent = document.getElementById("movie-show")
     movieContent.innerHTML += Movie.renderHTMLAll()
 }
+
+async function submitMovie(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const res = await apiService.submitMovie(formData);
+    if (res.ok) {
+      renderMovies();
+      e.target.reset();
+    }
+  }
 
 
 // bindEventListeners(){
