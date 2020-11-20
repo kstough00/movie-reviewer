@@ -1,5 +1,4 @@
 class ApiService {
-
     constructor() {
          this.baseUrl = `http://localhost:3000`;
     }
@@ -12,7 +11,7 @@ class ApiService {
 
     async submitMovie(movieData) {
         const res = await fetch(this.baseUrl+"/movies"), {
-          method: "POST",
+          method:"POST",
           body: movieData,
         });
         return res;

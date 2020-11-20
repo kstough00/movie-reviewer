@@ -3,14 +3,16 @@ console.log("Movies Rule")
 const api = new ApiService();
 
 const init = () =>{
-    renderMovies()
     bindEventListeners();
+    renderMovies()
 }
 
 function bindEventListeners() {
+    const reviewDropDown = document.getElementById('review-show')
     const newMovieForm = document.getElementById('movie-form');
     const newReviewForm = document.getElementById('review-form');
   
+    reviewDropDown.addEventListener('click', renderReviews);
     newMovieForm.addEventListener('submit', submitMovie);
     newReviewForm.addEventListener('submit', submitReview);
   }
@@ -32,7 +34,6 @@ async function submitMovie(e) {
     const res = await apiService.submitMovie(formData);
     if (res.ok) {
       renderMovies();
-      e.target.reset();
     }
   }
 

@@ -17,7 +17,7 @@ class Movie {
          ${this.release_year},
          ${this.producer},
          Reviews:${this.reviews.length} 
-            <form id= "createMovie" "display: none">
+            <form id= "movie-form" "display: none">
          <ul>
          ${this.reviews.map(review=> `<li> ${review.comment}: Rating:${review.rating}</li>`).join("")}
          </ul>
