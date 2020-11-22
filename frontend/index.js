@@ -8,12 +8,12 @@ const init = () =>{
 }
 
 function bindEventListeners() {
-    const reviewDropDown = document.getElementById('review-show')
     const newMovieForm = document.getElementById('movie-form');
+    const reviewDropDown = document.getElementById('review-show');
     const newReviewForm = document.getElementById('review-form');
   
-    // reviewDropDown.addEventListener('click', renderReviews);
     newMovieForm.addEventListener('submit', movieFormSubmission);
+    // reviewDropDown.addEventListener('click', renderReviews);
     // newReviewForm.addEventListener('submit', submitReview);
   }
 
@@ -35,8 +35,8 @@ async function renderMovies() {
 //     }
 // }
 
-async function movieFormSubmission(event){
-    event.preventDefault();
+async function movieFormSubmission(e){
+    e.preventDefault();
     // debugger
     let title = document.getElementById("title").value
     let release_year = document.getElementById("release_year").value
@@ -47,21 +47,29 @@ async function movieFormSubmission(event){
         release_year: release_year,
         producer: producer
     }
-    const resp = await api.submitMovie(movie)
-    // fetch(`${baseUrl}/movies`, {
-    //     method: "POST",
-    //     headers: {
-    //         'Accept': 'application/json',
-    //         'Content-Type': 'application/json'
-    //       },
-    //     body: JSON.stringify(movie)
-    // })
-    .then(resp => resp.json())
+    const res = await api.submitMovie(movie);
+    res(res => res.json())
     .then(movie => {
-        let m = new Movie(movie.id, movie.title, movie.release_year, movie.producer)
+        let m = new Movie(movie.title, movie.release_year, movie.producer)
         m.renderMovies();
     })
 
+}
+
+function submitReview(){
+    const reviewForms = document.querySelectorAll("review-form")
+    for (review  of review-form){
+        form.addEventListener("submit", function(e){
+            e.preventDefault()
+            const movieId = e.target.parentElement.parentElement.id.split("reviews-")[1]
+            const reviewData = {
+                movie_id = movieId,
+                comment = e.target.querySelector(".comment").value,
+                review = e.target.querySelector(".review").value
+            }
+            api.submitReview(movieData)
+        })
+    }
 }
 
   //need to write submitReview function

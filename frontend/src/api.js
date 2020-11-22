@@ -20,7 +20,7 @@ class ApiService {
 
     async submitReview(e) {
         e.preventDefault();
-        const res = await fetch(this.baseUrl+"/movies/:id[6]", {
+        const res = await fetch(this.baseUrl+"/movies/:id", {
           method: "POST",
           body: e
         });
