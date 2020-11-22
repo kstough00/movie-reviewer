@@ -9,12 +9,16 @@ class ApiService {
         return data 
     }
 
-    async submitMovie(e) {
-        e.preventDefault();
+    async submitMovie(movie) {
         const res = await fetch(this.baseUrl+"/movies", {
           method: "POST",
-          body: movie
-        });
+          headers: {
+            'Content-type': 'application/json',
+            'Accept': 'application/json'            
+          },
+          body: JSON.stringify(movie)
+          });
+        // debugger
         return res;
     }
 

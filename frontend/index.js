@@ -7,10 +7,13 @@ const init = () =>{
     renderMovies()
 }
 
+const movieContent = document.getElementById("movie-show")
+const newMovieForm = document.getElementById('movie-form')
+
+
 function bindEventListeners() {
-    const newMovieForm = document.getElementById('movie-form');
-    const reviewDropDown = document.getElementById('review-show');
-    const newReviewForm = document.getElementById('review-form');
+    // const reviewDropDown = document.getElementById('review-show');
+    // const newReviewForm = document.getElementById('review-form');
   
     newMovieForm.addEventListener('submit', movieFormSubmission);
     // reviewDropDown.addEventListener('click', renderReviews);
@@ -22,18 +25,15 @@ async function renderMovies() {
     for(movie of movies){
         new Movie(movie)
     }
-    const movieContent = document.getElementById("movie-show")
     movieContent.innerHTML += Movie.renderHTMLAll()
 }
 
-// async function submitMovie(e) {
-//     e.preventDefault();
-//     const formData = new FormData(e);
-//     const res = await apiService.submitMovie(formData);
-//     if (res.ok) {
-//       renderMovies();
-//     }
-// }
+function renderMovie(m) {
+    const renderMovie = m.renderIndexHTML() 
+    debugger
+    movieContent.innerHTML += renderMovie
+
+}
 
 async function movieFormSubmission(e){
     e.preventDefault();
@@ -41,38 +41,39 @@ async function movieFormSubmission(e){
     let title = document.getElementById("title").value
     let release_year = document.getElementById("release_year").value
     let producer = document.getElementById("producer").value
-
+    // debugger
     let movie = {
         title: title,
         release_year: release_year,
         producer: producer
     }
     const res = await api.submitMovie(movie);
-    res(res => res.json())
+    // .then(res => 
+        res.json()
+        // debugger
     .then(movie => {
-        let m = new Movie(movie.title, movie.release_year, movie.producer)
-        m.renderMovies();
+        movie.reviews = []
+        let m = new Movie(movie)
+        renderMovie(m);
     })
-
+    
 }
 
-function submitReview(){
-    const reviewForms = document.querySelectorAll("review-form")
-    for (review  of review-form){
-        form.addEventListener("submit", function(e){
-            e.preventDefault()
-            const movieId = e.target.parentElement.parentElement.id.split("reviews-")[1]
-            const reviewData = {
-                movie_id = movieId,
-                comment = e.target.querySelector(".comment").value,
-                review = e.target.querySelector(".review").value
-            }
-            api.submitReview(movieData)
-        })
-    }
-}
-
-  //need to write submitReview function
+// function submitReview(){
+//     const reviewForms = document.querySelectorAll("review-form")
+//     for (review  of review-form){
+//         form.addEventListener("submit", function(e){
+//             e.preventDefault()
+//             const movieId = e.target.parentElement.parentElement.id.split("reviews-")[1]
+//             const reviewData = {
+//                 movie_id = movieId,
+//                 comment = e.target.querySelector(".comment").value,
+//                 review = e.target.querySelector(".review").value
+//             }
+//             api.submitReview(movieData)
+//         })
+//     }
+// }
 
   
   init()
@@ -126,28 +127,3 @@ function submitReview(){
         
 //         containerDiv.innerHTML += newMovie.renderIndexHTML();
 //     })
-
-//     function getMovies() {
-//         fetch(`http://localhost:3000/movies`)
-//         .then(function(res) {
-//             return res.json()
-//         })
-//         .then(function (movies) {
-//             containerDiv.innerHTML += `<ul>`
-//             movies.forEach((m) => {
-//                 const newMovie = new Movie(
-//                     m.title, 
-//                     m.release_year, 
-//                     m.producer, 
-//                     m.reviews
-//                     );
-//                     console.log(newMovie);
-//                     containerDiv.innerHTML += newMovie.renderIndexHTML();
-//             });
-//             containerDiv.innerHTML += `</ul>`
-//         });
-//     }
-//     getMovies();
-// }
-
-// init();

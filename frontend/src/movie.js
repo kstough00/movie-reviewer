@@ -2,12 +2,12 @@ class Movie {
 
     static all = []
 
-    constructor(Obj){
-        this.id = Obj.id
-        this.title = Obj.title
-        this.release_year = Obj.release_year
-        this.producer = Obj.producer
-        this.reviews = Obj.reviews
+    constructor(obj){
+        this.id = obj.id
+        this.title = obj.title
+        this.release_year = obj.release_year
+        this.producer = obj.producer
+        this.reviews = obj.reviews
         Movie.all.push(this)
     }
 
@@ -16,7 +16,7 @@ class Movie {
         <li>${this.title},
          ${this.release_year},
          ${this.producer},
-         Reviews: ${this.reviews.length} 
+         Reviews: 
             <form id= "movie-form">
          <ul>
          ${this.reviews.map(review=> `<li> ${review.comment}: Rating:${review.rating}</li>`).join("")}

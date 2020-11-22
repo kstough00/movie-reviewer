@@ -16,7 +16,6 @@ class MoviesController < ApplicationController
   # POST /movies
   def create
     @movie = Movie.new(movie_params)
-
     if @movie.save
       render json: @movie, status: :created, location: @movie
     else
