@@ -20,9 +20,27 @@ function bindEventListeners() {
     // newReviewForm.addEventListener('submit', submitReview);
   }
 
-function bindReviewForm(){
+function bindReviewEvent(){
     const reviewBtns = document.querySelectorAll(".review-btn")
-    debugger
+    for( btn of reviewBtns){
+        btn.addEventListener("click", function(e){
+            const reviewDiv = document.querySelector(`review-${e.target.id.split("movie-")[1]}`)
+                if(reviewDiv.classList.contains("review-form")){
+                    reviewDiv.classList.remove("review-form")
+                }else{
+                    reviewDiv.classList.add("review-form")
+                }
+        })
+    }
+}
+
+function bindReviewForm(){
+    const reviewForms = document.getElementById('review-form')
+    for(form of reviewForms){
+        form.addEventListener("submit", function(e){
+            debugger
+        })
+    }
 }
 
 async function renderMovies() {
@@ -31,7 +49,7 @@ async function renderMovies() {
         new Movie(movie)
     }
     movieContent.innerHTML += Movie.renderHTMLAll()
-    bindReviewForm()
+    bindReviewEvent()
 }
 
 function renderMovie(m) {
