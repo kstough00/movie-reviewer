@@ -20,43 +20,43 @@ function bindEventListeners() {
     // newReviewForm.addEventListener('submit', submitReview);
   }
 
+function bindReviewForm(){
+    const reviewBtns = document.querySelectorAll(".review-btn")
+    debugger
+}
+
 async function renderMovies() {
     const movies = await api.getAllMovies()
     for(movie of movies){
         new Movie(movie)
     }
     movieContent.innerHTML += Movie.renderHTMLAll()
+    bindReviewForm()
 }
 
 function renderMovie(m) {
     const renderMovie = m.renderIndexHTML() 
     debugger
     movieContent.innerHTML += renderMovie
-
 }
 
 async function movieFormSubmission(e){
     e.preventDefault();
-    // debugger
     let title = document.getElementById("title").value
     let release_year = document.getElementById("release_year").value
     let producer = document.getElementById("producer").value
-    // debugger
     let movie = {
         title: title,
         release_year: release_year,
         producer: producer
     }
     const res = await api.submitMovie(movie);
-    // .then(res => 
         res.json()
-        // debugger
     .then(movie => {
         movie.reviews = []
         let m = new Movie(movie)
         renderMovie(m);
     })
-    
 }
 
 // function submitReview(){
@@ -80,50 +80,11 @@ async function movieFormSubmission(e){
   
   
   // bindEventListeners(){
-  //     let form = document.getElementById("movie-show")
-  //     document.getElementById("movie-show").addEventListener('click', function() {
+  //     let form = document.getElementById("review-form")
+  //     document.getElementById("add-review").addEventListener('click', function() {
   //         if(form.style.display === 'none') {
   //             form.style.display = 'block';
   //         } else {
   //             form.style.display = 'none';
   //         }
   // })
-  
-
-
-// document.addEventListener("DOMContentLoaded", () => {
-//     getMovies();
-// })
-
-// function init() {
-//     const containerDiv = document.getElementById("container");
-//     const consoleForm = document.querySelector("form")
-
-//     consoleForm.addEventListener('submit', (e) => {
-//         e.preventDefault()
-//         let title = document.getElementById("title").value
-//         let release_year = document.getElementById("release_year").value
-//         let producer = document.getElementById("producer").value
-
-//         let movie = {
-//             title: title,
-//             release_year: release_year,
-//             producer: producer
-//         }
-
-//         fetch(`http://localhost:3000/movies` , {
-//             method: "POST",
-//             headers: {
-//                 'Accept': 'application/json',
-//                 'Content-Type': 'application/json'
-//               },
-//             body: JSON.stringify(movie)
-//         })
-//         .then(resp => resp.json())
-//         .then(movie => {
-//             let m = new Movie(movie.id, movie.title, movie.release_year, movie.producer)
-//             m.renderMovie();
-//         })
-        
-//         containerDiv.innerHTML += newMovie.renderIndexHTML();
-//     })
