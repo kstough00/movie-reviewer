@@ -25,13 +25,15 @@ class Movie {
                 <div class="btn-group">
                     <h1><button type="button" id="movie-${this.id}" class="btn btn-sm btn-outline-secondary review-btn"> Add Review</button></h1>
                 </div>
-                <form id="review-form">
+            <div class="hidden">
+                <form class="review-form" id="${this.id}">
                     <label>Comment:</label>
                     <input type="text" id="comment"/><br>
                     <label>Rating:</label>
                     <input type="number" id="rating"/><br>
                     <input type="submit" />
                 </form>
+            </div>
             <br>
         </div>
          `)

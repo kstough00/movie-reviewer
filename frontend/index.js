@@ -13,20 +13,32 @@ const newMovieForm = document.getElementById('movie-form')
 
 function bindEventListeners() {
     // const reviewDropDown = document.getElementById('review-show');
-    // const newReviewForm = document.getElementById('review-form');
+    const newReviewForm = document.getElementById('add-review');
   
     newMovieForm.addEventListener('submit', movieFormSubmission);
     // reviewDropDown.addEventListener('click', renderReviews);
     // newReviewForm.addEventListener('submit', submitReview);
   }
 
+//  function addReviewForm(){
+//       let form = document.getElementById("add-review")
+//       document.getElementById("add-review").addEventListener('click', function() {
+//           if(form.style.display === 'none') {
+//               form.style.display = 'block';
+//           } else {
+//               form.style.display = 'none';
+//           }
+//   })
+//  }
+
 function bindReviewEvent(){
-    const reviewBtns = document.querySelectorAll(".review-btn")
+    reviewBtns = Array.from(document.querySelectorAll(".review-btn"))
     for( btn of reviewBtns){
         btn.addEventListener("click", function(e){
             const reviewDiv = document.querySelector(`review-${e.target.id.split("movie-")[1]}`)
-                if(reviewDiv.classList.contains("review-form")){
-                    reviewDiv.classList.remove("review-form")
+            debugger
+                if(reviewDiv.contains("review-form")){
+                    reviewDiv.remove("review-form")
                 }else{
                     reviewDiv.classList.add("review-form")
                 }
@@ -49,6 +61,7 @@ async function renderMovies() {
         new Movie(movie)
     }
     movieContent.innerHTML += Movie.renderHTMLAll()
+    submitReview()
     bindReviewEvent()
 }
 
@@ -77,21 +90,22 @@ async function movieFormSubmission(e){
     })
 }
 
-// function submitReview(){
-//     const reviewForms = document.querySelectorAll("review-form")
-//     for (review  of review-form){
-//         form.addEventListener("submit", function(e){
-//             e.preventDefault()
-//             const movieId = e.target.parentElement.parentElement.id.split("reviews-")[1]
-//             const reviewData = {
-//                 movie_id = movieId,
-//                 comment = e.target.querySelector(".comment").value,
-//                 review = e.target.querySelector(".review").value
-//             }
-//             api.submitReview(movieData)
-//         })
-//     }
-// }
+function submitReview(){
+    debugger
+    review_forms = Array.from(document.querySelectorAll(".review-form"))
+    for (form  of review_forms){
+        form.addEventListener("submit", function(e){
+            e.preventDefault()
+            const movieId = e.target.id
+            const reviewData = {
+                movie_id: Number.parseInt(movieId),
+                comment: e.target.querySelector("#comment").value,
+                rating: e.target.querySelector("#rating").value
+            }
+            api.submitReview(reviewData)
+        })
+    }
+}
 
   
   init()

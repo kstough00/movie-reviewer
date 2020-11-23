@@ -18,22 +18,21 @@ class ApiService {
           },
           body: JSON.stringify(movie)
           });
-        // debugger
         return res;
     }
 
     async submitReview(reviewData) {
-        e.preventDefault();
-        const res = await fetch(this.baseUrl+"/movies",{
+        const res = await fetch(this.baseUrl+"/reviews",{
           method: "POST",
           headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
           },
-          body: JSON.stringify(reviewData)
+          body: JSON.stringify({review: reviewData})
         });
-        const data = await resp.json()
-        return data;
-    }
+        // const data = await resp.json()
+        // return data;
+        init()
+      }
     
 }
