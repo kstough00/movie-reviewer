@@ -1,5 +1,3 @@
-console.log("Movies Rule")
-
 const api = new ApiService();
 
 const init = () =>{
@@ -36,7 +34,6 @@ function bindReviewEvent(){
     for( btn of reviewBtns){
         btn.addEventListener("click", function(e){
             const reviewDiv = document.querySelector(`review-${e.target.id.split("movie-")[1]}`)
-            debugger
                 if(reviewDiv.contains("review-form")){
                     reviewDiv.remove("review-form")
                 }else{
@@ -50,7 +47,6 @@ function bindReviewForm(){
     const reviewForms = document.getElementById('review-form')
     for(form of reviewForms){
         form.addEventListener("submit", function(e){
-            debugger
         })
     }
 }
@@ -67,7 +63,6 @@ async function renderMovies() {
 
 function renderMovie(m) {
     const renderMovie = m.renderIndexHTML() 
-    debugger
     movieContent.innerHTML += renderMovie
 }
 
@@ -91,7 +86,6 @@ async function movieFormSubmission(e){
 }
 
 function submitReview(){
-    debugger
     review_forms = Array.from(document.querySelectorAll(".review-form"))
     for (form  of review_forms){
         form.addEventListener("submit", function(e){
@@ -107,16 +101,4 @@ function submitReview(){
     }
 }
 
-  
   init()
-  
-  
-  // bindEventListeners(){
-  //     let form = document.getElementById("review-form")
-  //     document.getElementById("add-review").addEventListener('click', function() {
-  //         if(form.style.display === 'none') {
-  //             form.style.display = 'block';
-  //         } else {
-  //             form.style.display = 'none';
-  //         }
-  // })

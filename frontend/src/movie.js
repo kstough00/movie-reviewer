@@ -33,6 +33,7 @@ class Movie {
                     <input type="number" id="rating"/><br>
                     <input type="submit" />
                 </form>
+                <br><br>
             </div>
             <br>
         </div>
