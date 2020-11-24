@@ -22,17 +22,22 @@ class ApiService {
     }
 
     async submitReview(reviewData) {
-        const res = await fetch(this.baseUrl+"/reviews",{
+        const resp = await fetch(this.baseUrl+"/reviews",{
           method: "POST",
           headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
           },
           body: JSON.stringify({review: reviewData})
-        });
+        })
+        .then(data => data.json())
+        .then(res => {
+          Movie.findById(res.movie_id).reviews.push(res)
+          renderMovies()
+        })
+
         // const data = await resp.json()
-        // return res;
-        init()
-      }
+        // return data;
+    }
     
 }

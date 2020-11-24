@@ -2,7 +2,7 @@ const api = new ApiService();
 
 const init = () =>{
     bindEventListeners();
-    renderMovies()
+    fetchRenderMovies()
 }
 
 const movieContent = document.getElementById("movie-show")
@@ -51,11 +51,16 @@ function bindReviewForm(){
     }
 }
 
-async function renderMovies() {
+async function fetchRenderMovies() {
     const movies = await api.getAllMovies()
     for(movie of movies){
         new Movie(movie)
     }
+   renderMovies()
+}
+
+function renderMovies() {
+    movieContent.innerHTML = ""
     movieContent.innerHTML += Movie.renderHTMLAll()
     submitReview()
     bindReviewEvent()

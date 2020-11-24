@@ -13,6 +13,7 @@ class Movie {
 
     renderIndexHTML() {
         return (`
+        <br>
         <li><strong>${this.title}-</strong>
          ${this.release_year}-
          ${this.producer}
@@ -33,7 +34,7 @@ class Movie {
                     <input type="number" id="rating"/><br>
                     <input type="submit" />
                 </form>
-                <br><br>
+                <br>
             </div>
             <br>
         </div>
@@ -50,6 +51,11 @@ class Movie {
         ${this.renderHTMLAll()}
         </li>
         `)
+    }
+
+    static findById(movie_id){
+        return Movie.all.find((movie) => {
+            return movie_id === movie.id})
     }
 
 }
