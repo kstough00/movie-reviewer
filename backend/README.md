@@ -1,24 +1,20 @@
-# README
+JS Portfolio Project: Movie-Reviewer
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Description:
+Movie-reviewer is an application where you and your friends can log the movies you have seen and rate/comment on those movies for your friends to see.
 
-Things you may want to cover:
+* Ruby version: ruby-2.6.1 [ x86_64 ]
 
-* Ruby version
+Usage
+Run 'rails db:migrate' and 'rails db:seed' to create the database tables & seed data
+Run 'rails s' to start the rails server
+Open the index.html file in your browser
+Begin by adding a review or adding a new movie for review
+See a list of moviews and their reviews
+search for movies with the search bar
 
-* System dependencies
+Contributing
+This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the Contributor Covenant code of conduct.
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+License
+The gem is available as open source under the terms of the MIT License.

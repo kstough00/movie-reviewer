@@ -35,9 +35,6 @@ class ApiService {
           Movie.findById(res.movie_id).reviews.push(res)
           renderMovies()
         })
-
-        // const data = await resp.json()
-        // return data;
     }
     
 }

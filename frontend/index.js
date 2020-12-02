@@ -11,11 +11,10 @@ const newMovieForm = document.getElementById('movie-form')
 
 function bindEventListeners() {
     // const reviewDropDown = document.getElementById('review-show');
-    const newReviewForm = document.getElementById('add-review');
+    // const newReviewForm = document.getElementById('add-review');
   
     newMovieForm.addEventListener('submit', movieFormSubmission);
     // reviewDropDown.addEventListener('click', renderReviews);
-    // newReviewForm.addEventListener('submit', submitReview);
   }
 
 //  function addReviewForm(){
