@@ -20,7 +20,7 @@ class Movie {
          <li>Reviews ${this.reviews.length}: </li>
             <div class= "reviews-show">
                 <ul>
-                    ${this.reviews.map(review=> `<li> ${review.comment}: Rating:${review.rating}</li>`).join("")}
+                ${this.reviews.map(review => `<li> ${review.comment}: Rating:${review.rating}</li>`).join("")}
                 </ul>
             </div>
                 <div class="btn-group">
@@ -58,4 +58,8 @@ class Movie {
             return movie_id === movie.id})
     }
 
+    static findByTitle(movie_title){
+        return Movie.all.find((movie) => {
+            return movie_title === movie.title})
+    }
 }
